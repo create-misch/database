@@ -27,7 +27,7 @@ bool operator ==(const Date &lhs, const Date &rhs) {
             tie(rhs.year_, rhs.month_, rhs.day_);
 }
 
-iostream &operator <<(iostream &stream, const Date &rhs) {
+istream &operator <<(istream &stream, const Date &rhs) {
     stream << rhs.year_ << "-" << rhs.month_ << "-" << rhs.day_;
 }
 

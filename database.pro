@@ -3,7 +3,7 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-QMAKE_CXXFLAGS += -Wall -Werror
+#QMAKE_CXXFLAGS += -Wall -Werror
 
 SOURCES += main.cpp \
     token.cpp \

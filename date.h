@@ -26,7 +26,7 @@ private:
 bool operator <(const Date &lhs, const Date &rhs);
 bool operator ==(const Date &lhs, const Date &rhs);
 
-std::iostream &operator << (std::iostream &stream, const Date &rhs);
+std::istream &operator << (std::istream &stream, const Date &rhs);
 
 Date ParseDate(std::istream &is);
 

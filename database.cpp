@@ -22,7 +22,7 @@ void Database::Add(const Date &date, const string &event) {
 void Database::Print(ostream &stream) {
     auto printPair = [] (ostream  &stream, const pair<Date, Events> &pair) {
         for (const auto & e : pair.second) {
-            cout << pair.first << " " << e << endl;
+            stream << pair.first << " " << e << endl;
         }
     };
 
