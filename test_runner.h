@@ -3,10 +3,10 @@
 #include <sstream>
 #include <exception>
 #include <iostream>
-#include <strstream>
 #include <string>
 #include <set>
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -49,7 +49,7 @@ template<class T, class U>
 void AssertEqual(const T& t, const U& u,
     const string& hint)
 {
-  if (t != u) {
+  if (!(t == u)) {
     ostringstream os;
     os << "Assertion failed: " << t << " != " << u
        << " hint: " << hint;
@@ -57,7 +57,7 @@ void AssertEqual(const T& t, const U& u,
   }
 }
 
-void Assert(bool b, const string& hint) {
+inline void Assert(bool b, const string& hint) {
   AssertEqual(b, true, hint);
 }
 

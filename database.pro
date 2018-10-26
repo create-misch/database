@@ -3,6 +3,8 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
+CONFIG += debug_and_release
+
 QMAKE_CXXFLAGS += -Wall -Werror
 
 SOURCES += main.cpp \

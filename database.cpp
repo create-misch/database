@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "database.h"
 
 using namespace std;
@@ -22,7 +24,7 @@ void Database::Add(const Date &date, const string &event) {
 void Database::Print(ostream &stream) {
     auto printPair = [] (ostream  &stream, const pair<Date, Events> &pair) {
         for (const auto & e : pair.second) {
-            cout << pair.first << " " << e << endl;
+            stream << pair.first << " " << e << endl;
         }
     };
 
@@ -37,6 +39,6 @@ string Database::Last(const Date &date) {
         return string("No entries");
     }
 
-    return --it_find.second.back();
+    return (--it_find)->second.back();
 }
 

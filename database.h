@@ -3,8 +3,12 @@
 #include <iostream>
 #include <map>
 #include <deque>
+#include <functional>
 
 #include "date.h"
+
+template <class Param>
+using Fn = std::function<Param>;
 
 using Events = std::deque<std::string>;
 using DateEventsMap = std::map<Date, Events>;

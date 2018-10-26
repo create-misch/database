@@ -4,18 +4,15 @@
 
 using namespace std;
 
-Date::Date() :
-    year_(0),
-    month_(0),
-    day_(0) {}
+Date::Date() {}
 
 Date::Date(const int year, const int month, const int day) :
-    year_(static_cast<uint16_t>(year)),
-    month_(static_cast<uint8_t>(month)),
-    day_(static_cast<uint8_t>(day)) {}
+    day_(day),
+    month_(month),
+    year_(year) {}
 
-Date::Date(string &&year, string &&month, string &&day) :
-    year_(year), month_(month), day_(day) {}
+Date::Date(const string &year, const string &month, const string &day) :
+    day_(stoi(day)), month_(stoi(month)), year_(stoi(year))  {}
 
 bool operator <(const Date &lhs, const Date &rhs) {
     return tie(lhs.year_, lhs.month_, lhs.day_) <
@@ -27,14 +24,13 @@ bool operator ==(const Date &lhs, const Date &rhs) {
             tie(rhs.year_, rhs.month_, rhs.day_);
 }
 
-iostream &operator <<(iostream &stream, const Date &rhs) {
+ostream &operator <<(ostream &stream, const Date &rhs) {
     stream << rhs.year_ << "-" << rhs.month_ << "-" << rhs.day_;
+    return stream;
 }
 
 Date ParseDate(istream &is) {
-    auto year = getline(is, "-");
-    auto month = getline(is, "-");
-    auto day = getline(is, "-");
-
-    return Date(year, month, day);
+    int  year, month, day;
+    is >> year >> month >> day;
+    return Date(year, abs(month), abs(day));
 }
