@@ -7,6 +7,7 @@
 #include <vector>
 #include <istream>
 #include <stdexcept>
+#include <cstring>
 
 using namespace std;
 
@@ -16,17 +17,10 @@ void TestParseEvent();
 string ParseEvent(istream& is) {
     // Р РµР°Р»РёР·СѓР№С� Рµ СЌС� Сѓ С„СѓРЅРєС†РёСЋ
     string result;
-//    is >> result;
+
     if (is.get() == 0x20) {
-        char symbol = is.get();
-        while (symbol != 0x4 ) {
-            result.push_back(symbol);
-            symbol = is.get();
-        }
+        getline(is, result, '\n');
     }
-    for (auto it = result.rbegin(); it != result.rend(); it++ )
-        if (*it == ' ')
-            result.pop_back();
 
     return result;
 }

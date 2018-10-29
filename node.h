@@ -1,9 +1,6 @@
 #pragma once
 
-class Node
-{
+class Node {
 public:
     Node();
-
-
 };

@@ -108,7 +108,7 @@ shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) {
 }
 
 shared_ptr<Node> ParseCondition(istream& is) {
-is.gcount();
+    is.gcount();
 //  auto tokens = Tokenize(is);
 //  auto current = tokens.begin();
 //  auto top_node = ParseExpression(current, tokens.end(), 0u);

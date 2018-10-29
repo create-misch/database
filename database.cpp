@@ -7,7 +7,7 @@ using namespace std;
 Database::Database() {}
 
 void Database::Add(const Date &date, const string &event) {
-    auto events = dateEvents_[date];
+    auto &events = dateEvents_[date];
 
     if (events.empty()) {
         events.push_back(event);
@@ -35,7 +35,10 @@ void Database::Print(ostream &stream) {
 
 string Database::Last(const Date &date) {
     auto it_find = dateEvents_.find(date);
-    if (it_find == begin(dateEvents_) || it_find == end(dateEvents_)) {
+    if (it_find == begin(dateEvents_)) {
+        return it_find->second.back();
+    }
+    if (it_find == end(dateEvents_)) {
         return string("No entries");
     }
 
