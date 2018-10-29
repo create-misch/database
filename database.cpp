@@ -21,7 +21,7 @@ void Database::Add(const Date &date, const string &event) {
     events.push_back(event);
 }
 
-void Database::Print(ostream &stream) {
+void Database::Print(ostream &stream) const {
     auto printPair = [] (ostream  &stream, const pair<Date, Events> &pair) {
         for (const auto & e : pair.second) {
             stream << pair.first << " " << e << endl;
@@ -53,7 +53,24 @@ int Database::RemoveIf(Predicate predicate) {
     return count;
 }
 
-string Database::Last(const Date &date) {
+Events Database::FindIf(Predicate predicate) const {
+    Events result;
+
+    for (auto &pair : dateEvents_) {
+        const auto &date = pair.first;
+        auto &events = pair.second;
+        if (events.empty())
+            continue;
+
+        for (const auto &event : events) {
+            if (predicate(date, event))
+                result.push_back(event);
+        }
+    }
+    return result;
+}
+
+string Database::Last(const Date &date) const {
     auto it_find = dateEvents_.find(date);
     if (it_find == begin(dateEvents_)) {
         return it_find->second.back();
