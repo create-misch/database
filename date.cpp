@@ -19,8 +19,28 @@ bool operator <(const Date &lhs, const Date &rhs) {
             tie(rhs.year_, rhs.month_, rhs.day_);
 }
 
+bool operator <=(const Date &lhs, const Date &rhs) {
+    return tie(lhs.year_, lhs.month_, lhs.day_) <=
+            tie(rhs.year_, rhs.month_, rhs.day_);
+}
+
+bool operator >(const Date &lhs, const Date &rhs) {
+    return tie(lhs.year_, lhs.month_, lhs.day_) >
+            tie(rhs.year_, rhs.month_, rhs.day_);
+}
+
+bool operator >=(const Date &lhs, const Date &rhs) {
+    return tie(lhs.year_, lhs.month_, lhs.day_) >=
+            tie(rhs.year_, rhs.month_, rhs.day_);
+}
+
 bool operator ==(const Date &lhs, const Date &rhs) {
     return tie(lhs.year_, lhs.month_, lhs.day_) ==
+            tie(rhs.year_, rhs.month_, rhs.day_);
+}
+
+bool operator !=(const Date &lhs, const Date &rhs) {
+    return tie(lhs.year_, lhs.month_, lhs.day_) !=
             tie(rhs.year_, rhs.month_, rhs.day_);
 }
 
@@ -34,3 +54,4 @@ Date ParseDate(istream &is) {
     is >> year >> month >> day;
     return Date(year, abs(month), abs(day));
 }
+

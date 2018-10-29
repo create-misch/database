@@ -22,4 +22,5 @@ HEADERS += \
     test_runner.h \
     database.h \
     date.h \
-    node.h
+    node.h \
+    comparison.h

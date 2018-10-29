@@ -33,6 +33,26 @@ void Database::Print(ostream &stream) {
     }
 }
 
+int Database::RemoveIf(Predicate predicate) {
+    if (dateEvents_.size() == 0) return 0;
+
+    auto count(0);
+    for (auto &pair : dateEvents_) {
+        const auto &date = pair.first;
+        auto &events = pair.second;
+        if (events.empty())
+            continue;
+
+        auto it_remove = std::remove_if(begin(events), end(events), [&] (const std::string event) {
+            return predicate(date, event);
+        });
+        count += distance(it_remove, end(events));
+
+        events.erase(it_remove, end(events));
+    }
+    return count;
+}
+
 string Database::Last(const Date &date) {
     auto it_find = dateEvents_.find(date);
     if (it_find == begin(dateEvents_)) {

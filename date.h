@@ -11,7 +11,11 @@ public:
     Date(const std::string &year, const std::string &month, const std::string &day);
 
     friend bool operator <(const Date &lhs, const Date &rhs);
+    friend bool operator <=(const Date &lhs, const Date &rhs);
+    friend bool operator >(const Date &lhs, const Date &rhs);
+    friend bool operator >=(const Date &lhs, const Date &rhs);
     friend bool operator ==(const Date &lhs, const Date &rhs);
+    friend bool operator !=(const Date &lhs, const Date &rhs);
     friend std::ostream &operator <<(std::ostream &stream, const Date &rhs);
 
 private:
@@ -21,10 +25,15 @@ private:
 };
 
 bool operator <(const Date &lhs, const Date &rhs);
+bool operator <=(const Date &lhs, const Date &rhs);
+bool operator >(const Date &lhs, const Date &rhs);
+bool operator >=(const Date &lhs, const Date &rhs);
 bool operator ==(const Date &lhs, const Date &rhs);
+bool operator !=(const Date &lhs, const Date &rhs);
 
 std::ostream &operator << (std::ostream &stream, const Date &rhs);
 
 Date ParseDate(std::istream &is);
 
 void TestParseDate();
+
